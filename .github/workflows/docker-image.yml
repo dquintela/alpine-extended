@@ -25,5 +25,7 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER}}/alpine-psimulator-build-sdk:${{steps.vars.outputs.build_date}} --tag ${{secrets.DOCKER_USER}}/alpine-psimulator-build-sdk:latest
-    - name: Docker Push
-      run: docker push ${{secrets.DOCKER_USER}}/alpine-psimulator-build-sdk:${{steps.vars.outputs.build_date}} ${{secrets.DOCKER_USER}}/alpine-psimulator-build-sdk:latest
+    - name: Docker Push (latest)
+      run: docker push ${{secrets.DOCKER_USER}}/alpine-psimulator-build-sdk:latest
+    - name: Docker Push (tagged)
+      run: docker push ${{secrets.DOCKER_USER}}/alpine-psimulator-build-sdk:${{steps.vars.outputs.build_date}}
