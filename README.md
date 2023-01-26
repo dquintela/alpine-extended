@@ -1,1 +1,1 @@
-# alpine-extended
+# alpine-psimulator-build-sdk
